@@ -30,7 +30,7 @@ void insertionSort(int arr[], int size_of_array)
     unsigned int end_time = clock(); // конечное время
     unsigned int search_time = end_time - start_time; // искомое время
     std::cout << "Time intention sort takes " << search_time << " to sort " << size_of_array << " items"  << std::endl;
-    printArray(arr, size_of_array);
+    // printArray(arr, size_of_array);
 }
 
 void bubbleSort(int arr[], int size_of_array)
@@ -48,7 +48,7 @@ void bubbleSort(int arr[], int size_of_array)
     unsigned int search_time = end_time - start_time; // искомое время
 
     std::cout << "Time bubble sort takes " << search_time << " to sort " << size_of_array << " items"  << std::endl;
-    printArray(arr, size_of_array);
+    //printArray(arr, size_of_array);
 }
 
 void selectionSort(int arr[], int size_of_array)
@@ -72,19 +72,35 @@ void selectionSort(int arr[], int size_of_array)
     unsigned int end_time = clock(); // конечное время
     unsigned int search_time = end_time - start_time; // искомое время
     std::cout << "Time selection sort takes " << search_time << " to sort " << size_of_array << " items"  << std::endl;
-    printArray(arr, size_of_array);
+    //printArray(arr, size_of_array);
 }
 
 
 
 int main()
 {
+    std::cout << "Enter size of array: ";
+    int size_of_array;
+    std::cin >> size_of_array;
 
-    int array[11] = { 2, 71, 8, 1, -5, 6, 5, -100, 1000, 55, -106}; // объявляем массив
-    int size_of_array= sizeof(array) / sizeof(array[1]); // вычисляем размер массива
-    bubbleSort(array, size_of_array);    // вызовы функций различных сортировок
+    int *array = new int[size_of_array]; // выделяем память под массив
+
+    srand(time(0)); // без stand  time функция будет выдавать одни и те же "случайные" числа
+    for (int i = 0; i < size_of_array; i++) { // Заполнение массива
+
+        array[i] = std::rand(); // генерируем случайные числа для массива
+
+    }
+
+
+
+    //printArray(array, size_of_array);
+    //bubbleSort(array, size_of_array);    // вызовы функций различных сортировок
+    //insertionSort(array, size_of_array); // вызовы функций различных сортировок
     selectionSort(array, size_of_array); // вызовы функций различных сортировок
-    insertionSort(array, size_of_array); // вызовы функций различных сортировок
 
 
+
+    delete [] array; // очистка памяти
+    return 0;
 }
